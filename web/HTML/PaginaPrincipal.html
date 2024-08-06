@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Gestión de Inventarios</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="../CSS/paginaPrincipal.css" rel="stylesheet" type="text/css"/>
+    <link rel="shortcut icon" href="../Img/home.svg" type="image/x-icon">
+    <link rel="icon" href="../Img/home.svg" type="image/png">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body onload="verificartoken(); startTime();">
+    <div transition-style="in:custom:circle-swoop">
+        <div class="sidebar close">
+            <div class="logo-details">
+                <div class="home-icon">
+                    <a href="PaginaPrincipal.html"><i class='bx bx-home'></i></a>
+                </div>
+                <span class="logo_name">Gestión de Préstamos</span>
+            </div>
+            <ul class="nav-links">
+                <li>
+                    <div class="icon-link" id="catalogos">
+                        <a href="#">
+                            <i class='bx bxs-food-menu'></i>
+                            <span class="link_name">Catálogos</span>
+                        </a>
+                        <ul class="sub-menu">
+                            <li><a href="CatalogoUsuarios.html">Usuarios <i class='bx bx-user bx-xs'></i></a></li>
+                            <li><a href="CataloArticulos.html">Artículos <i class='bx bxs-cart bx-xs'></i></a></li>
+                            <li><a href="CatalogoProyectos.html">Proyectos <i class='bx bxs-hard-hat bx-xs'></i></a></li>
+                            <li><a href="CatalagoLugares.html">Lugares <i class='bx bxs-home-alt-2 bx-xs'></i></a></li>
+                        </ul>
+                        <i class='bx bx-chevron-down arrow' ></i>
+                    </div>                   
+                </li>
+                <li>
+                    <div class="icon-link" id="procesos">
+                        <a href="#">
+                            <i class='bx bxs-backpack'></i>
+                            <span class="link_name">Procesos</span>
+                        </a>
+                        <i class='bx bx-chevron-down arrow' ></i>
+                    </div>
+                    <ul class="sub-menu">
+                        <li><a href="ProcesosPrestamo.html">Realizar Préstamo <i class='bx bx-check bx-xs'></i></a></li>
+                        <li><a href="ModificarPrestamo.html">Modificar Prestamo <i class='bx bxs-edit bx-xs' ></i></a></li>
+                        <li><a href="DevolucionPrestamo.html">Devoluciones <i class='bx bx-arrow-back bx-xs' ></i></a></li>
+                        <li><a href="RenovacionPrestamo.html">Renovación <i class='bx bx-transfer-alt bx-xs'></i></a></li>
+                    </ul>
+                </li>
+                <li>
+                    <div class="icon-link" id="reportes">
+                        <a href="#">
+                            <i class='bx bxs-report' ></i>
+                            <span class="link_name">Reportes</span>
+                        </a>
+                        <i class='bx bx-chevron-down arrow' ></i>
+                    </div>
+                    <ul class="sub-menu">
+                        <li><a href="Reportes.html">Reportes <i class='bx bxs-file-doc bx-xs' ></i></a></li>
+                        <li><a href="ReportePrestamos.html">Prestamo <i class='bx bxs-file-doc bx-xs' ></i></a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#" id="logoutBtn">
+                        <i class='bx bx-log-out-circle'></i>
+                        <span class="link_name">Salir</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="contenido_principal">
+            <div class="container mt-5">
+                <div class="row mt-4">
+                    <br><br><br><br><br><br><br><br><br><br>
+                    <img src="../Img/LogoCIO.png" alt=""/>
+                </div>
+            </div>
+        </div>
+        <div id="clock"></div>
+    </div>
+    <script src="../JavaScript/PaginaPrincipal.js" type="text/javascript"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</body>
+</html>

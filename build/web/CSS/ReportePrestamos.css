@@ -1,0 +1,223 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : 18 jul. 2024, 14:18:26
+    Author     : checo
+*/
+
+.datos{
+    display: none;
+}
+.contenido_principal {
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+    margin-left: 260px;
+    height: max-content;
+}
+
+/* Estilo para los títulos */
+.contenido_principal h1,
+.contenido_principal h2 {
+    color: #333;
+    margin-bottom: 30px;
+}
+
+/* Estilo para las tablas */
+.contenido_principal table {
+    background-color: #CDE8E5;
+    border-collapse: collapse;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.contenido_principal th,
+.contenido_principal td {
+    padding: 8px;
+    border: 1px solid #ddd;
+}
+
+.contenido_principal th {
+    background-color: #4D869C;
+    color: #fff;
+}
+
+@media screen and (max-width: 768px) {
+    .contenido_principal {
+        margin-left: 0;
+    }
+}
+
+button {
+ position: relative;
+ display: inline-block;
+ cursor: pointer;
+ outline: none;
+ border: 0;
+ vertical-align: middle;
+ text-decoration: none;
+ font-family: inherit;
+ font-size: 15px;
+}
+
+button.learn-more {
+ font-weight: 600;
+ color: #4D869C; /* Cambiado */
+ text-transform: uppercase;
+ padding: 1.25em 2em;
+ background: #EEF7FF; /* Cambiado */
+ border: 2px solid #7AB2B2; /* Cambiado */
+ border-radius: 0.75em;
+ -webkit-transform-style: preserve-3d;
+ transform-style: preserve-3d;
+ -webkit-transition: background 150ms cubic-bezier(0, 0, 0.58, 1), -webkit-transform 150ms cubic-bezier(0, 0, 0.58, 1);
+ transition: transform 150ms cubic-bezier(0, 0, 0.58, 1), background 150ms cubic-bezier(0, 0, 0.58, 1), -webkit-transform 150ms cubic-bezier(0, 0, 0.58, 1);
+}
+
+button.learn-more::before {
+ position: absolute;
+ content: '';
+ width: 100%;
+ height: 100%;
+ top: 0;
+ left: 0;
+ right: 0;
+ bottom: 0;
+ background: #CDE8E5; /* Cambiado */
+ border-radius: inherit;
+ -webkit-box-shadow: 0 0 0 2px #7AB2B2, 0 0.625em 0 0 #EEF7FF; /* Cambiado */
+ box-shadow: 0 0 0 2px #7AB2B2, 0 0.625em 0 0 #EEF7FF; /* Cambiado */
+ -webkit-transform: translate3d(0, 0.75em, -1em);
+ transform: translate3d(0, 0.75em, -1em);
+ transition: transform 150ms cubic-bezier(0, 0, 0.58, 1), box-shadow 150ms cubic-bezier(0, 0, 0.58, 1), -webkit-transform 150ms cubic-bezier(0, 0, 0.58, 1), -webkit-box-shadow 150ms cubic-bezier(0, 0, 0.58, 1);
+}
+
+button.learn-more:hover {
+ background: #CDE8E5; /* Cambiado */
+ -webkit-transform: translate(0, 0.25em);
+ transform: translate(0, 0.25em);
+}
+
+button.learn-more:hover::before {
+ -webkit-box-shadow: 0 0 0 2px #7AB2B2, 0 0.5em 0 0 #EEF7FF; /* Cambiado */
+ box-shadow: 0 0 0 2px #7AB2B2, 0 0.5em 0 0 #EEF7FF; /* Cambiado */
+ -webkit-transform: translate3d(0, 0.5em, -1em);
+ transform: translate3d(0, 0.5em, -1em);
+}
+
+button.learn-more:active {
+ background: #CDE8E5; /* Cambiado */
+ -webkit-transform: translate(0em, 0.75em);
+ transform: translate(0em, 0.75em);
+}
+
+button.learn-more:active::before {
+ -webkit-box-shadow: 0 0 0 2px #7AB2B2, 0 0 #EEF7FF; /* Cambiado */
+ box-shadow: 0 0 0 2px #7AB2B2, 0 0 #EEF7FF; /* Cambiado */
+ -webkit-transform: translate3d(0, 0, -1em);
+ transform: translate3d(0, 0, -1em);
+}
+/* otro boton */
+button.btn.btn-danger {
+  padding: 12.5px 30px;
+  border: 0;
+  border-radius: 100px;
+  background-color: #074173;
+  color: #ffffff;
+  font-weight: bold;
+  transition: all 0.5s;
+  -webkit-transition: all 0.5s;
+}
+
+button.btn.btn-danger:hover {
+  background-color: #1679AB;
+  box-shadow: 0 0 20px #6fc5ff50;
+  transform: scale(1.1);
+}
+
+button.btn.btn-danger:active {
+  background-color: #3d94cf;
+  transition: all 0.25s;
+  -webkit-transition: all 0.25s;
+  box-shadow: none;
+  transform: scale(0.98);
+}
+
+#search-input {
+    width: 80%;
+    padding: 12px 20px;
+    margin-bottom: 20px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+#search-input::placeholder {
+    color: #999;
+}
+
+#search-input:focus {
+    border-color: #074173;
+    outline: none;
+    box-shadow: 0 0 5px rgba(7, 65, 115, 0.5);
+}
+
+/* Estilos para el formulario de devolución de préstamo */
+#formDetallesPrestamo {
+    background-color: #f9f9f9; /* Color de fondo */
+    border: 2px solid #ddd; /* Borde */
+    border-radius: 5px; /* Bordes redondeados */
+    padding: 30px; /* Espaciado interno */
+    margin-bottom: 20px; /* Espacio inferior */
+    max-width: 1000px; /* Ancho máximo */
+    margin: auto; /* Centrar horizontalmente */
+}
+
+#formDetallesPrestamo h3 {
+    color: #333; /* Color de texto */
+    margin-bottom: 10px; /* Espacio inferior */
+}
+
+#formDetallesPrestamo .form-group {
+    margin-bottom: 20px; /* Espacio inferior */
+}
+
+#formDetallesPrestamo input, 
+#formDetallesPrestamo select {
+    font-size: 16px; /* Tamaño de fuente */
+    padding: 10px; /* Espaciado interno */
+    width: 100%; /* Ancho completo */
+    border: 1px solid #ccc; /* Borde */
+    border-radius: 5px; /* Bordes redondeados */
+    background-color: #fff; /* Color de fondo */
+    color: #333; /* Color de texto */
+    appearance: none; /* Para eliminar los estilos nativos del sistema operativo */
+    -webkit-appearance: none; /* Para navegadores basados en WebKit */
+    -moz-appearance: none; /* Para navegadores basados en Gecko */
+    cursor: pointer; /* Cursor de puntero */
+    box-sizing: border-box; /* Para incluir el padding y el borde en el ancho total */
+}
+
+#formDetallesPrestamo button {
+    text-align: center;
+    margin: 20px 0; /* Espacio superior e inferior */
+    font-size: 16px; /* Tamaño de fuente */
+    padding: 10px 20px; /* Espaciado interno */
+    background-color: #074173; /* Color de fondo */
+    color: #fff; /* Color de texto */
+    border: none; /* Sin borde */
+    border-radius: 5px; /* Bordes redondeados */
+    cursor: pointer; /* Cursor de puntero */
+    transition: background-color 0.3s ease; /* Transición suave */
+    width: 250px; /* Ancho del botón */
+}
+
+#formDetallesPrestamo button:hover {
+    background-color: #062e53; /* Color de fondo al pasar el cursor */
+}
+#botones {
+    margin: 25px;
+}

@@ -1,0 +1,205 @@
+/*Contenido*/
+* {
+    font-family: "Roboto Mono", sans-serif;
+}
+
+.contenido_principal {
+    font-family: "Roboto Mono", sans-serif;
+    margin: 0 auto; /* Esto centra horizontalmente */
+    padding: 20px;
+    text-align: center;
+    margin-left: 260px; /* Ancho del sidebar */
+    padding: 20px;
+}
+
+@media screen and (max-width: 768px) {
+    .contenido_principal {
+        margin-left: 0;
+    }
+}
+
+.contenido_principal {
+    margin-left: 260px;
+    padding: 20px;
+    height: max-content;
+}
+
+/* Estilo para los títulos */
+.contenido_principal h1,
+.contenido_principal h2 {
+    color: #333; /* Color de texto */
+    margin-bottom: 30px; /* Espacio inferior */
+}
+
+/* Estilo para las tablas */
+.contenido_principal table {
+    background-color: #CDE8E5; /* Color de fondo */
+    border-collapse: collapse;
+    width: 100%;
+    margin-bottom: 20px; /* Espacio inferior */
+}
+
+.contenido_principal th,
+.contenido_principal td {
+    padding: 8px;
+    border: 1px solid #ddd; /* Borde de la tabla */
+}
+
+.contenido_principal th {
+    background-color: #4D869C; /* Color de fondo para las celdas de encabezado */
+    color: #fff;
+}
+
+/* Estilo para los botones dentro del contenido principal */
+.contenido_principal button {
+    margin-bottom: 20px; /* Espacio inferior */
+}
+
+/* Animación para los inputs */
+.group {
+    position: relative;
+    margin-bottom: 45px;
+}
+
+.group input {
+    font-size: 18px;
+    padding: 10px 10px 10px 5px;
+    display: block;
+    width: 300px;
+    border: none;
+    border-bottom: 1px solid #999;
+    outline: none;
+    background: transparent;
+}
+
+.group input:focus {
+    outline: none;
+}
+
+.group label {
+    color: #999;
+    font-size: 18px;
+    font-weight: normal;
+    position: absolute;
+    pointer-events: none;
+    left: 5px;
+    top: 10px;
+    transition: 0.2s ease all;
+}
+
+/* active */
+.group input:focus~label,
+.group input:valid~label {
+    top: -20px;
+    font-size: 14px;
+    color: #5264AE;
+}
+
+.group .bar {
+    position: relative;
+    display: block;
+    width: 300px;
+}
+
+.group .bar:before,
+.group .bar:after {
+    content: '';
+    height: 2px;
+    width: 0;
+    bottom: 1px;
+    position: absolute;
+    background: #5264AE;
+    transition: 0.2s ease all;
+}
+
+.group .bar:before {
+    left: 50%;
+}
+
+.group .bar:after {
+    right: 50%;
+}
+
+/* active */
+.group input:focus~.bar:before,
+.group input:focus~.bar:after {
+    width: 50%;
+}
+
+/* Estilos para el formulario de usuario */
+#formUsuario {
+    background-color: #f9f9f9; /* Color de fondo */
+    border: 2px solid #ddd; /* Borde */
+    border-radius: 5px; /* Bordes redondeados */
+    padding: 30px; /* Espaciado interno */
+    margin-bottom: 20px; /* Espacio inferior */
+    max-width: 1000px; /* Ancho máximo */
+    margin: auto; /* Centrar horizontalmente */
+}
+
+#formUsuario h2 {
+    color: #333; /* Color de texto */
+    margin-bottom: 20px; /* Espacio inferior */
+}
+
+#formUsuario .form-group {
+    margin-bottom: 30px; /* Espacio inferior */
+}
+
+#formUsuario label {
+    color: #333; /* Color de texto */
+    font-size: 16px; /* Tamaño de fuente */
+}
+
+#formUsuario input,
+#formUsuario select {
+    font-size: 16px; /* Tamaño de fuente */
+    padding: 10px; /* Espaciado interno */
+    width: 100%; /* Ancho completo */
+    border: 1px solid #ccc; /* Borde */
+    border-radius: 5px; /* Bordes redondeados */
+    background: transparent; /* Fondo transparente */
+    margin-top: 10px; /* Espacio superior */
+}
+
+#formUsuario select:focus {
+    border-color: #5264AE; /* Color del borde en foco */
+}
+
+.search-container {
+    margin-top: 50px;
+    text-align: center;
+}
+
+#search-input {
+    padding: 10px;
+    font-size: 16px;
+    width: 200px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button {
+  padding: 12.5px 30px;
+  border: 0;
+  border-radius: 100px;
+  background-color: #074173;
+  color: #ffffff;
+  font-weight: Bold;
+  transition: all 0.5s;
+  -webkit-transition: all 0.5s;
+}
+
+button:hover {
+  background-color: #1679AB;
+  box-shadow: 0 0 20px #6fc5ff50;
+  transform: scale(1.1);
+}
+
+button:active {
+  background-color: #3d94cf;
+  transition: all 0.25s;
+  -webkit-transition: all 0.25s;
+  box-shadow: none;
+  transform: scale(0.98);
+}

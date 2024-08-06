@@ -1,0 +1,305 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : 1 jul. 2024, 13:37:18
+    Author     : checo
+*/
+
+.datos{
+    display: none;
+}
+.contenido_principal {
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+    margin-left: 260px;
+    height: max-content;
+}
+
+/* Estilo para los títulos */
+.contenido_principal h1,
+.contenido_principal h2 {
+    color: #333;
+    margin-bottom: 30px;
+}
+
+/* Estilo para las tablas */
+.contenido_principal table {
+    background-color: #CDE8E5;
+    border-collapse: collapse;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.contenido_principal th,
+.contenido_principal td {
+    padding: 8px;
+    border: 1px solid #ddd;
+}
+
+.contenido_principal th {
+    background-color: #4D869C;
+    color: #fff;
+}
+
+@media screen and (max-width: 768px) {
+    .contenido_principal {
+        margin-left: 0;
+    }
+}
+
+button {
+ position: relative;
+ display: inline-block;
+ cursor: pointer;
+ outline: none;
+ border: 0;
+ vertical-align: middle;
+ text-decoration: none;
+ font-family: inherit;
+ font-size: 15px;
+}
+
+button.learn-more {
+ font-weight: 600;
+ color: #4D869C; /* Cambiado */
+ text-transform: uppercase;
+ padding: 1.25em 2em;
+ background: #EEF7FF; /* Cambiado */
+ border: 2px solid #7AB2B2; /* Cambiado */
+ border-radius: 0.75em;
+ -webkit-transform-style: preserve-3d;
+ transform-style: preserve-3d;
+ -webkit-transition: background 150ms cubic-bezier(0, 0, 0.58, 1), -webkit-transform 150ms cubic-bezier(0, 0, 0.58, 1);
+ transition: transform 150ms cubic-bezier(0, 0, 0.58, 1), background 150ms cubic-bezier(0, 0, 0.58, 1), -webkit-transform 150ms cubic-bezier(0, 0, 0.58, 1);
+}
+
+button.learn-more::before {
+ position: absolute;
+ content: '';
+ width: 100%;
+ height: 100%;
+ top: 0;
+ left: 0;
+ right: 0;
+ bottom: 0;
+ background: #CDE8E5; /* Cambiado */
+ border-radius: inherit;
+ -webkit-box-shadow: 0 0 0 2px #7AB2B2, 0 0.625em 0 0 #EEF7FF; /* Cambiado */
+ box-shadow: 0 0 0 2px #7AB2B2, 0 0.625em 0 0 #EEF7FF; /* Cambiado */
+ -webkit-transform: translate3d(0, 0.75em, -1em);
+ transform: translate3d(0, 0.75em, -1em);
+ transition: transform 150ms cubic-bezier(0, 0, 0.58, 1), box-shadow 150ms cubic-bezier(0, 0, 0.58, 1), -webkit-transform 150ms cubic-bezier(0, 0, 0.58, 1), -webkit-box-shadow 150ms cubic-bezier(0, 0, 0.58, 1);
+}
+
+button.learn-more:hover {
+ background: #CDE8E5; /* Cambiado */
+ -webkit-transform: translate(0, 0.25em);
+ transform: translate(0, 0.25em);
+}
+
+button.learn-more:hover::before {
+ -webkit-box-shadow: 0 0 0 2px #7AB2B2, 0 0.5em 0 0 #EEF7FF; /* Cambiado */
+ box-shadow: 0 0 0 2px #7AB2B2, 0 0.5em 0 0 #EEF7FF; /* Cambiado */
+ -webkit-transform: translate3d(0, 0.5em, -1em);
+ transform: translate3d(0, 0.5em, -1em);
+}
+
+button.learn-more:active {
+ background: #CDE8E5; /* Cambiado */
+ -webkit-transform: translate(0em, 0.75em);
+ transform: translate(0em, 0.75em);
+}
+
+button.learn-more:active::before {
+ -webkit-box-shadow: 0 0 0 2px #7AB2B2, 0 0 #EEF7FF; /* Cambiado */
+ box-shadow: 0 0 0 2px #7AB2B2, 0 0 #EEF7FF; /* Cambiado */
+ -webkit-transform: translate3d(0, 0, -1em);
+ transform: translate3d(0, 0, -1em);
+}
+/* otro boton */
+button.btn.btn-danger {
+  padding: 12.5px 30px;
+  border: 0;
+  border-radius: 100px;
+  background-color: #074173;
+  color: #ffffff;
+  font-weight: bold;
+  transition: all 0.5s;
+  -webkit-transition: all 0.5s;
+}
+
+button.btn.btn-danger:hover {
+  background-color: #1679AB;
+  box-shadow: 0 0 20px #6fc5ff50;
+  transform: scale(1.1);
+}
+
+button.btn.btn-danger:active {
+  background-color: #3d94cf;
+  transition: all 0.25s;
+  -webkit-transition: all 0.25s;
+  box-shadow: none;
+  transform: scale(0.98);
+}
+/* BTN ELIMINAR */
+button.noselect {
+    width: 150px;
+    height: 50px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    background: red;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 1px 1px 3px rgba(0,0,0,0.15);
+    background: #e62222;
+    position: relative; /* Añadido para asegurar que el posicionamiento relativo funcione */
+}
+
+button.noselect, button.noselect span {
+    transition: 200ms;
+}
+
+button.noselect .text {
+    transform: translateX(35px);
+    color: white;
+    font-weight: bold;
+}
+
+button.noselect .icon {
+    position: absolute;
+    border-left: 1px solid #c41b1b;
+    transform: translateX(110px);
+    height: 40px;
+    width: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+button.noselect svg {
+    width: 15px;
+    fill: #eee;
+}
+
+button.noselect:hover {
+    background: #ff3636;
+}
+
+button.noselect:hover .text {
+    color: transparent;
+}
+
+button.noselect:hover .icon {
+    width: 150px;
+    border-left: none;
+    transform: translateX(0);
+}
+
+button.noselect:focus {
+    outline: none;
+}
+
+button.noselect:active .icon svg {
+    transform: scale(0.8);
+}
+
+
+#search-input {
+    width: 80%;
+    padding: 12px 20px;
+    margin-bottom: 20px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+#search-input::placeholder {
+    color: #999;
+}
+
+#search-input:focus {
+    border-color: #074173;
+    outline: none;
+    box-shadow: 0 0 5px rgba(7, 65, 115, 0.5);
+}
+
+#search-input-products {
+    width: 80%;
+    padding: 12px 20px;
+    margin-bottom: 20px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+#search-input-products::placeholder {
+    color: #999;
+}
+
+#search-input-products:focus {
+    border-color: #074173;
+    outline: none;
+    box-shadow: 0 0 5px rgba(7, 65, 115, 0.5);
+}
+
+/* Estilos para el formulario de devolución de préstamo */
+#formDetallesPrestamo {
+    background-color: #f9f9f9; /* Color de fondo */
+    border: 2px solid #ddd; /* Borde */
+    border-radius: 5px; /* Bordes redondeados */
+    padding: 30px; /* Espaciado interno */
+    margin-bottom: 20px; /* Espacio inferior */
+    max-width: 1000px; /* Ancho máximo */
+    margin: auto; /* Centrar horizontalmente */
+}
+
+#formDetallesPrestamo h3 {
+    color: #333; /* Color de texto */
+    margin-bottom: 10px; /* Espacio inferior */
+}
+
+#formDetallesPrestamo .form-group {
+    margin-bottom: 20px; /* Espacio inferior */
+}
+
+#formDetallesPrestamo input, 
+#formDetallesPrestamo select {
+    font-size: 16px; /* Tamaño de fuente */
+    padding: 10px; /* Espaciado interno */
+    width: 100%; /* Ancho completo */
+    border: 1px solid #ccc; /* Borde */
+    border-radius: 5px; /* Bordes redondeados */
+    background-color: #fff; /* Color de fondo */
+    color: #333; /* Color de texto */
+    appearance: none; /* Para eliminar los estilos nativos del sistema operativo */
+    -webkit-appearance: none; /* Para navegadores basados en WebKit */
+    -moz-appearance: none; /* Para navegadores basados en Gecko */
+    cursor: pointer; /* Cursor de puntero */
+    box-sizing: border-box; /* Para incluir el padding y el borde en el ancho total */
+}
+
+.dropdown-menu {
+    position: 150px;
+    background-color: white;
+    border: 1px solid #ccc;
+    max-height: 150px;
+    overflow-y: auto;
+    display: none;
+    z-index: 1000;
+    width: calc(100% - 22px);
+}
+
+.dropdown-menu li {
+    padding: 8px 12px;
+    cursor: pointer;
+}
+
+.dropdown-menu li:hover {
+    background-color: #f1f1f1;
+}

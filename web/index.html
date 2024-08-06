@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Gestion de Inventarios</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+        <link href="CSS/login.css" rel="stylesheet" type="text/css"/>
+        <link rel="shortcut icon" href="../Img/home.svg" type="image/x-icon">
+        <link rel="icon" href="../Img/home.sv.png" type="image/png">
+    </head>
+    <body>
+        <div class="container" id="container">
+            <div class="form-container sign-in">
+                <form id="login">
+                    <h1>Inicio Sesión</h1>
+                    <span>Recuerda tu Usuario y Contraseña</span>
+                    <input type="text" id="username" placeholder="Usuario">
+                    <input type="password" id="password" placeholder="Contraseña" class="form-control form-control-lg">
+                    <button type="button" class="button" onclick="loginSucces()">Ingresar <i class='bx bx-log-in'></i></button>
+                </form>
+            </div>
+            <div class="toggle-container">
+                <div class="toggle">
+                    <div class="toggle-panel toggle-left">
+                        <img src="Img/LogoCIO.png" alt=""/>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script src="JavaScript/login.js" type="text/javascript"></script>
+        <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    </body>
+</html>
