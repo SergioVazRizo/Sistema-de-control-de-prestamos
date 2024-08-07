@@ -42,6 +42,7 @@ CREATE TABLE Lugares (
 CREATE TABLE Prestamos (
     cve_prestamo            INT AUTO_INCREMENT PRIMARY KEY,
     usuario                 VARCHAR(100),
+    id_usuario				int,
     correo                  VARCHAR(100),
     rol                     VARCHAR(100),
     lugarDeUso              varchar(100),

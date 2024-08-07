@@ -5917,4 +5917,3 @@ select * from Articulos ;
 
 select * from Prestamos;
 select * from prestamoarticulos;
-select * from articulos where id_articulo = 4801;
