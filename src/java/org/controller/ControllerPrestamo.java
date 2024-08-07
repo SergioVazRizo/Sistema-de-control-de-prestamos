@@ -15,6 +15,57 @@ import java.time.LocalDate;
 
 public class ControllerPrestamo {
 
+    //Get Prestamos
+    public List<Prestamo> getAllPrestamos() throws SQLException, ClassNotFoundException {
+        List<Prestamo> prestamosList = new ArrayList<>();
+        String query = "SELECT * FROM Prestamos";
+
+        ConexionMySQL connMySQL = new ConexionMySQL();
+        Connection conn = null;
+        PreparedStatement pstm = null;
+        ResultSet rs = null;
+
+        try {
+            conn = connMySQL.openConnection();
+            pstm = conn.prepareStatement(query);
+            rs = pstm.executeQuery();
+
+            while (rs.next()) {
+                int cve_prestamo = rs.getInt("cve_prestamo");
+                String usuario = rs.getString("usuario");
+                String correo = rs.getString("correo");
+                String rol = rs.getString("rol");
+                String lugarDeUso = rs.getString("lugarDeUso");
+                String ProyectoApoyo = rs.getString("ProyectoApoyo");
+                Date fechaSalida = rs.getDate("Fecha_salida");
+                Date fechaVencimiento = rs.getDate("Fecha_vencimiento");
+                Date fechaDevolucion = rs.getDate("Fecha_devolucion");
+
+                Prestamo prestamo = new Prestamo(cve_prestamo, usuario, correo, rol, lugarDeUso, ProyectoApoyo, fechaSalida, fechaVencimiento, fechaDevolucion);
+                prestamosList.add(prestamo);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw e;
+        } finally {
+            try {
+                if (rs != null) {
+                    rs.close();
+                }
+                if (pstm != null) {
+                    pstm.close();
+                }
+                if (conn != null) {
+                    conn.close();
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+
+        return prestamosList;
+    }
+    
     //Funcion para las notificaciones automaticas
     public List<Prestamo> getPrestamosPorVencer() throws SQLException, ClassNotFoundException {
         List<Prestamo> prestamosList = new ArrayList<>();
@@ -118,9 +169,9 @@ public class ControllerPrestamo {
         }
     }
 
-    //Disponiblidad de los articulos
+    // Disponiblidad de los articulos
     public boolean verificarDisponibilidadArticulos(List<Articulo> articulos) throws ClassNotFoundException {
-        String query = "SELECT adision, Estatus FROM Articulos WHERE id_articulo = ?";
+        String query = "SELECT Estatus FROM Articulos WHERE id_articulo = ?";
         ConexionMySQL objConn = new ConexionMySQL();
         try {
             Connection conn = objConn.openConnection();
@@ -129,9 +180,8 @@ public class ControllerPrestamo {
                 pstmt.setInt(1, articulo.getId_articulo());
                 ResultSet rs = pstmt.executeQuery();
                 if (rs.next()) {
-                    int adision = rs.getInt("adision");
                     String estatus = rs.getString("Estatus");
-                    if (adision <= 0 || !"Disponible".equals(estatus)) {
+                    if (!"Disponible".equals(estatus)) {
                         return false;
                     }
                 } else {
@@ -145,9 +195,9 @@ public class ControllerPrestamo {
         }
     }
 
-    //Actualizar el estatus y adision de los articulos 
-    public boolean actualizarAdisionEstatusArticulos(List<Articulo> articulos) throws ClassNotFoundException {
-        String query = "UPDATE Articulos SET adision = adision - 1, Estatus = CASE WHEN adision - 1 <= 0 THEN 'No Disponible' ELSE Estatus END WHERE id_articulo = ?";
+    // Actualizar el estatus de los artículos
+    public boolean actualizarEstatusArticulos(List<Articulo> articulos) throws ClassNotFoundException {
+        String query = "UPDATE Articulos SET Estatus = CASE WHEN adision <= 0 THEN 'No Disponible' ELSE 'Disponible' END WHERE id_articulo = ?";
         ConexionMySQL objConn = new ConexionMySQL();
         try {
             Connection conn = objConn.openConnection();
@@ -169,7 +219,7 @@ public class ControllerPrestamo {
             return actualizacionExitosa;
 
         } catch (SQLException ex) {
-            System.out.println("Error al actualizar adisión y estatus de los artículos: " + ex.getMessage());
+            System.out.println("Error al actualizar el estatus de los artículos: " + ex.getMessage());
             return false;
         }
     }
@@ -229,7 +279,7 @@ public class ControllerPrestamo {
     //Funcion para realizar la devolucion de un prestamo
     public boolean realizarDevolucion(int clavePrestamo) throws ClassNotFoundException {
         String updatePrestamoQuery = "UPDATE Prestamos SET Fecha_devolucion = NOW() WHERE cve_prestamo = ? AND Fecha_devolucion IS NULL";
-        String updateArticuloQuery = "UPDATE Articulos SET adision = adision + 1, Estatus = CASE WHEN adision + 1 > 0 THEN 'Disponible' ELSE Estatus END WHERE id_articulo = ?";
+        String updateArticuloQuery = "UPDATE Articulos SET Estatus = CASE WHEN adision + 1 > 0 THEN 'Disponible' ELSE Estatus END WHERE id_articulo = ?";
         ConexionMySQL objConn = new ConexionMySQL();
         try {
             Connection conn = objConn.openConnection();
@@ -330,7 +380,7 @@ public class ControllerPrestamo {
 
     public boolean eliminarArticuloPrestamo(int idArticulo, String claveArticulo) throws ClassNotFoundException {
         String deleteArticuloPrestamoQuery = "DELETE FROM PrestamoArticulos WHERE id_articulo = ? AND cve_articulo = ?";
-        String updateArticuloQuery = "UPDATE Articulos SET adision = adision + 1, Estatus = CASE WHEN adision + 1 > 0 THEN 'Disponible' ELSE Estatus END WHERE id_articulo = ?";
+        String updateArticuloQuery = "UPDATE Articulos SET Estatus = 'Disponible' WHERE id_articulo = ?";
 
         ConexionMySQL objConn = new ConexionMySQL();
         try (Connection conn = objConn.openConnection()) {

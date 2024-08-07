@@ -352,7 +352,7 @@ function hacerPrestamo() {
     }
 
     // Enviar la solicitud de préstamo
-    fetch(BASE_URL+'api/prestamo/hacerPrestamo', {
+    fetch(BASE_URL+'SistemaGestion/api/prestamo/hacerPrestamo', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded'

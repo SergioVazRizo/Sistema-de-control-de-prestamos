@@ -29,8 +29,8 @@ public class Articulo {
         this.estatus = estatus;
         this.responsable = responsable;
         this.cuenta = cuenta;
-    }
-
+    }   
+    
     //Constructor vacio
     public Articulo(){}
     

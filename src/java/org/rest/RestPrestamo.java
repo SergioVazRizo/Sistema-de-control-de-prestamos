@@ -14,6 +14,7 @@ import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.QueryParam;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
+import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -24,6 +25,30 @@ import org.model.Articulo;
 
 @Path("prestamo")
 public class RestPrestamo {
+
+    @GET
+    @Path("getAllPrestamos")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getAllPrestamos() {
+        String out;
+        List<Prestamo> prestamos;
+        ControllerPrestamo controller = new ControllerPrestamo(); // Asegúrate de tener este controlador con el método getAllPrestamos
+
+        try {
+            prestamos = controller.getAllPrestamos();
+            out = new Gson().toJson(prestamos);
+        } catch (ClassNotFoundException | SQLException e) {
+            out = "{\"error\":\"Ocurrió un error. Intente más tarde.\"}";
+            return Response.status(Response.Status.INTERNAL_SERVER_ERROR)
+                    .type(MediaType.APPLICATION_JSON)
+                    .entity(out)
+                    .build();
+        }
+        return Response.status(Response.Status.OK)
+                .type(MediaType.APPLICATION_JSON)
+                .entity(out)
+                .build();
+    }
 
     @Path("hacerPrestamo")
     @POST
@@ -70,7 +95,7 @@ public class RestPrestamo {
             if (cve_prestamo > 0) {
                 boolean resultadoArticulos = controller.insertarArticulosPrestamo(cve_prestamo, articulos);
                 if (resultadoArticulos) {
-                    boolean actualizacionExitosa = controller.actualizarAdisionEstatusArticulos(articulos);
+                    boolean actualizacionExitosa = controller.actualizarEstatusArticulos(articulos);
                     if (actualizacionExitosa) {
                         out = "{\"success\":\"Prestamo realizado correctamente\", \"clave_prestamo\":" + cve_prestamo + "}";
                     } else {
@@ -260,7 +285,7 @@ public class RestPrestamo {
 
                 boolean resultadoArticulos = controller.insertarArticulosPrestamo(cve_prestamo, nuevosArticulos);
                 if (resultadoArticulos) {
-                    boolean actualizacionArticulosExitosa = controller.actualizarAdisionEstatusArticulos(nuevosArticulos);
+                    boolean actualizacionArticulosExitosa = controller.actualizarEstatusArticulos(nuevosArticulos);
                     if (actualizacionArticulosExitosa) {
                         out = "{\"success\":\"Préstamo modificado correctamente\"}";
                     } else {

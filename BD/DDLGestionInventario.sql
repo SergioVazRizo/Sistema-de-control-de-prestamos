@@ -22,7 +22,7 @@ CREATE TABLE Proyectos (
 
 CREATE TABLE Articulos (
     id_articulo         INT PRIMARY KEY AUTO_INCREMENT,
-    clave_articulo      VARCHAR(60),
+    clave_articulo      VARCHAR(100),
     adision             INT,
     Descripcion         VARCHAR(100),
     Modelo              VARCHAR(25),
@@ -35,8 +35,8 @@ CREATE TABLE Articulos (
 
 CREATE TABLE Lugares (
     cve_lugar       INT AUTO_INCREMENT PRIMARY KEY,
-    Ubicacion       VARCHAR(50),
-    Nombre          VARCHAR(50)
+    Ubicacion       VARCHAR(100),
+    Nombre          VARCHAR(100)
 );
 
 CREATE TABLE Prestamos (

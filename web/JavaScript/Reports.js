@@ -183,6 +183,101 @@ document.addEventListener('DOMContentLoaded', () => {
     generateExcelButton.addEventListener('click', ReporteUsuariosExcel);
 });
 
+//Prestamos
+
+async function fetchPrestamos() {
+    const response = await fetch(BASE_URL + 'SistemaGestion/api/prestamo/getAllPrestamos');
+    return await response.json();
+}
+
+async function ReportePrestamos() {
+    const prestamos = await fetchPrestamos();
+
+    // Ordenar alfabéticamente por el campo 'usuario'
+    prestamos.sort((a, b) => a.usuario.localeCompare(b.usuario));
+
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF();
+    const pageWidth = doc.internal.pageSize.getWidth();
+
+    const data = prestamos.map(prestamo => [
+        prestamo.cve_prestamo,
+        prestamo.usuario,
+        prestamo.correo,
+        prestamo.rol,
+        prestamo.lugarDeUso,
+        prestamo.ProyectoApoyo,
+        prestamo.fechaSalida,
+        prestamo.fechaVencimiento,
+        prestamo.fechaDevolucion
+    ]);
+
+    doc.setFont("times");
+    doc.setFontSize(19);
+    doc.text("Reporte de Préstamos", pageWidth / 2, 20, null, null, "center");
+
+    const y = 30;
+    doc.autoTable({
+        head: [['Clave Préstamo', 'Usuario', 'Correo', 'Rol', 'Lugar de Uso', 'Proyecto de Apoyo', 'Fecha Salida', 'Fecha Vencimiento', 'Fecha Devolución']],
+        body: data,
+        startY: y,
+        theme: 'striped',
+        headStyles: {
+            fillColor: [77, 134, 156],
+            textColor: [238, 247, 255],
+            fontSize: 10,
+        },
+        bodyStyles: {
+            textColor: [55, 58, 64],
+            fontSize: 8,
+        },
+        margin: { left: 10, right: 10 },
+        styles: {
+            halign: 'center',
+            overflow: 'linebreak',
+            cellPadding: 0.1,
+            lineHeight: 0.5,
+        },
+    });
+
+    doc.save("Prestamos.pdf");
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    const generateButton = document.getElementById('generate-pdf-prestamos');
+    generateButton.addEventListener('click', ReportePrestamos);
+});
+
+async function ReportePrestamosExcel() {
+    const prestamos = await fetchPrestamos();
+
+    // Ordenar alfabéticamente por el campo 'usuario'
+    prestamos.sort((a, b) => a.usuario.localeCompare(b.usuario));
+
+    const data = prestamos.map(prestamo => ({
+        'Clave Préstamo': prestamo.cve_prestamo,
+        'Usuario': prestamo.usuario,
+        'Correo': prestamo.correo,
+        'Rol': prestamo.rol,
+        'Lugar de Uso': prestamo.lugarDeUso,
+        'Proyecto de Apoyo': prestamo.ProyectoApoyo,
+        'Fecha Salida': prestamo.fechaSalida,
+        'Fecha Vencimiento': prestamo.fechaVencimiento,
+        'Fecha Devolución': prestamo.fechaDevolucion
+    }));
+
+    const worksheet = XLSX.utils.json_to_sheet(data);
+    const workbook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(workbook, worksheet, "Prestamos");
+
+    XLSX.writeFile(workbook, "Prestamos.xlsx");
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    const generateExcelButton = document.getElementById('generate-excel-prestamos');
+    generateExcelButton.addEventListener('click', ReportePrestamosExcel);
+});
+
 //Articulos
 async function fetchArticulos() {
     const response = await fetch(BASE_URL+'SistemaGestion/api/articulo/getAllArticulos');
@@ -242,13 +337,14 @@ async function ReporteArticulosExcel() {
     const articulos = await fetchArticulos();
 
     const data = articulos.map(articulo => ({
-        'Clave': articulo.claveArticulo,
-        'Cantidad': articulo.adicion,
-        'Descripción': articulo.descripcion,
+        'Clave CIO': articulo.claveArticulo,
+        'Descripcion': articulo.descripcion,
         'Modelo': articulo.modelo,
         'Marca': articulo.marca,
-        'Número de Serie': articulo.numSerie,
-        'Estado': articulo.estatus
+        'Num_Serie': articulo.numSerie,
+        'Estatus': articulo.estatus,
+        'Responsable':articulo.responsable,
+        'Cuenta':articulo.cuenta
     }));
 
     const worksheet = XLSX.utils.json_to_sheet(data);

@@ -52,7 +52,7 @@ function cerrarSesion() {
                         text: 'exitosamente',
                         icon: 'success'
                     }).then(() => {
-                        window.location.href = BASE_URL  + 'index.html';
+                        window.location.href = BASE_URL  + 'SistemaGestion/index.html';
                     });
                 } else {
                     throw new Error('Error al cerrar sesión');

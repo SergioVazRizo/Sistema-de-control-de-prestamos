@@ -130,7 +130,6 @@ function cargarArticulos() {
                 <tr>
                     <td>${articulo.id_articulo}</td>
                     <td>${articulo.claveArticulo}</td>
-                    <td>${articulo.adicion}</td>
                     <td>${articulo.descripcion}</td>
                     <td>${articulo.modelo}</td>
                     <td>${articulo.marca}</td>
@@ -139,7 +138,7 @@ function cargarArticulos() {
                     <td>${articulo.responsable}</td>
                     <td>${articulo.cuenta}</td>
                     <td>
-                        <button type="button" class="btn btn-info" onclick="seleccionarArticulo('${articulo.id_articulo}','${articulo.claveArticulo}', '${articulo.adicion}', '${articulo.descripcion}', '${articulo.modelo}', '${articulo.marca}', '${articulo.numSerie}', '${articulo.estatus}', '${articulo.responsable}', '${articulo.cuenta}')" data-id="${articulo.id_articulo}"><i class='bx bxs-select-multiple'></i></button>
+                        <button type="button" class="btn btn-info" onclick="seleccionarArticulo('${articulo.id_articulo}','${articulo.claveArticulo}', '${articulo.descripcion}', '${articulo.modelo}', '${articulo.marca}', '${articulo.numSerie}', '${articulo.estatus}', '${articulo.responsable}', '${articulo.cuenta}')" data-id="${articulo.id_articulo}"><i class='bx bxs-select-multiple'></i></button>
                     </td>
                 </tr>
             `;
@@ -169,7 +168,6 @@ function buscarArticulo() {
                     <tr>
                         <td>${articulo.id_articulo}</td>
                         <td>${articulo.claveArticulo}</td>
-                        <td>${articulo.adicion}</td>
                         <td>${articulo.descripcion}</td>
                         <td>${articulo.modelo}</td>
                         <td>${articulo.marca}</td>
@@ -178,7 +176,7 @@ function buscarArticulo() {
                         <td>${articulo.responsable}</td>
                         <td>${articulo.cuenta}</td>
                         <td>
-                            <button type="button" class="btn btn-info" onclick="seleccionarArticulo('${articulo.id_articulo}','${articulo.claveArticulo}', '${articulo.adicion}', '${articulo.descripcion}', '${articulo.modelo}', '${articulo.marca}', '${articulo.numSerie}', '${articulo.estatus}', '${articulo.responsable}', '${articulo.cuenta}')" data-id="${articulo.id_articulo}"><i class='bx bxs-select-multiple'></i></button>
+                            <button type="button" class="btn btn-info" onclick="seleccionarArticulo('${articulo.id_articulo}','${articulo.claveArticulo}', '${articulo.descripcion}', '${articulo.modelo}', '${articulo.marca}', '${articulo.numSerie}', '${articulo.estatus}', '${articulo.responsable}', '${articulo.cuenta}')" data-id="${articulo.id_articulo}"><i class='bx bxs-select-multiple'></i></button>
                         </td>
                     </tr>
                 `;
@@ -198,7 +196,7 @@ function buscarArticulo() {
 function agregarArticulo() {
     var data = {
         clave_articulo: document.getElementById("cve_articulo").value,
-        adicion: document.getElementById("adicion").value,
+        adicion : 0,
         descripcion: document.getElementById("descripcion").value,
         modelo: document.getElementById("modelo").value,
         marca: document.getElementById("marca").value,
@@ -229,7 +227,7 @@ function agregarArticulo() {
         } else {
             Swal.fire({
                 title: 'Error',
-                text: 'No se pudo agregar el lugar',
+                text: 'No se pudo agregar el articulo',
                 icon: 'error'
             });
         }
@@ -253,7 +251,6 @@ function editarArticulo() {
     }
 
     const clave_articulo = document.getElementById('cve_articulo').value;
-    const adicion = document.getElementById('adicion').value;
     const descripcion = document.getElementById('descripcion').value;
     const modelo = document.getElementById('modelo').value;
     const marca = document.getElementById('marca').value;
@@ -267,7 +264,7 @@ function editarArticulo() {
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded'
         },
-        body: `id_articulo=${encodeURIComponent(id_articulo)}&clave_articulo=${encodeURIComponent(clave_articulo)}&adicion=${encodeURIComponent(adicion)}&descripcion=${encodeURIComponent(descripcion)}&modelo=${encodeURIComponent(modelo)}&marca=${encodeURIComponent(marca)}&num_serie=${encodeURIComponent(num_serie)}&estatus=${encodeURIComponent(estatus)}&responsable=${encodeURIComponent(responsable)}&cuenta=${encodeURIComponent(cuenta)}`
+        body: `id_articulo=${encodeURIComponent(id_articulo)}&clave_articulo=${encodeURIComponent(clave_articulo)}&descripcion=${encodeURIComponent(descripcion)}&modelo=${encodeURIComponent(modelo)}&marca=${encodeURIComponent(marca)}&num_serie=${encodeURIComponent(num_serie)}&estatus=${encodeURIComponent(estatus)}&responsable=${encodeURIComponent(responsable)}&cuenta=${encodeURIComponent(cuenta)}`
     })
     .then(response => response.json())
     .then(data => {
@@ -299,10 +296,9 @@ function editarArticulo() {
     });
 }
 
-function seleccionarArticulo(id_articulo, cve_articulo, adicion, descripcion, modelo, marca, num_serie, estatus, responsable, cuenta) {
+function seleccionarArticulo(id_articulo, cve_articulo, descripcion, modelo, marca, num_serie, estatus, responsable, cuenta) {
     document.getElementById("id_articulo").value = id_articulo;
     document.getElementById('cve_articulo').value = cve_articulo;
-    document.getElementById('adicion').value = adicion;
     document.getElementById('descripcion').value = descripcion;
     document.getElementById('modelo').value = modelo;
     document.getElementById('marca').value = marca;
@@ -321,7 +317,6 @@ function obtenerIdArticuloSeleccionado() {
 function limpiarFormulario() {
 document.getElementById("id_articulo").value = '';
 document.getElementById('cve_articulo').value = '';
-document.getElementById('adicion').value = '';
 document.getElementById('descripcion').value = '';
 document.getElementById('modelo').value = '';
 document.getElementById('marca').value = '';
@@ -334,7 +329,6 @@ document.getElementById('search-input').value = '';
 
 function validarFormulario() {
         var cve_articulo = document.getElementById("cve_articulo").value;
-        var adicion = document.getElementById("adicion").value;
         var descripcion = document.getElementById("descripcion").value;
         var modelo = document.getElementById("modelo").value;
         var marca = document.getElementById("marca").value;
@@ -362,7 +356,7 @@ function validarFormulario() {
         }
 
         // Verificar si algún campo está vacío
-        if (cve_articulo == "" || adicion == "" || descripcion == "" || modelo == "" || marca == "" || num_serie == "" ||   estatus == "" || responsable == "" || cuenta == "") {
+        if (cve_articulo == "" || descripcion == "" || modelo == "" || marca == "" || num_serie == "" ||   estatus == "" || responsable == "" || cuenta == "") {
             Swal.fire({
                 icon: 'error',
                 title: 'Oops...',
