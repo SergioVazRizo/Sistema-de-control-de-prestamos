@@ -76,9 +76,9 @@ function verificarToken() {
     }
 }
 
-
 window.onload = function () {
     verificarToken();
+    startTime();
 };
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -128,6 +128,5 @@ function checkTime(i) {
     return i;
 }
 
-window.onload = startTime; // Iniciar el reloj cuando la página cargue
 
 

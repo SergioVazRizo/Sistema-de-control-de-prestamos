@@ -309,8 +309,8 @@ function generarReporte() {
         head: [['Cant.', 'Descripción', 'Clave CIO', 'Fecha_Devolución']],
         body: data,
         margin: {left: margin, right: margin},
-        styles: {fontSize: 8, cellPadding: 1}, // Reducir tamaño de fuente y padding
-        theme: 'striped' // Cambiar tema de la tabla a 'striped'
+        styles: {fontSize: 8, cellPadding: 1}, 
+        theme: 'striped' 
     });
 
     // Pie de página
@@ -318,18 +318,17 @@ function generarReporte() {
         const pageCount = doc.internal.getNumberOfPages();
         for (let i = 1; i <= pageCount; i++) {
             doc.setPage(i);
-            const footerY = doc.internal.pageSize.height - 7; // Ajustar margen inferior
+            const footerY = doc.internal.pageSize.height - 7; 
 
-            // Agregar líneas justo encima de los textos de firma
-            const lineYOffset = 3; // Ajustar la distancia entre la línea y el texto
+            const lineYOffset = 3;
             doc.setLineWidth(0.5);
-            doc.line(margin, footerY - lineYOffset, margin + 40, footerY - lineYOffset); // Línea para "FIRMA DE RECIBIDO"
-            doc.line(pageWidth / 2 - 20, footerY - lineYOffset, pageWidth / 2 + 20, footerY - lineYOffset); // Línea para "FIRMA DE AUTORIZACIÓN DE DFA"
-            doc.line(pageWidth - margin - 40, footerY - lineYOffset, pageWidth - margin, footerY - lineYOffset); // Línea para "FIRMA DEL RESPONSABLE"
+            doc.line(margin, footerY - lineYOffset, margin + 40, footerY - lineYOffset);
+            doc.line(pageWidth / 2 - 20, footerY - lineYOffset, pageWidth / 2 + 20, footerY - lineYOffset); 
+            doc.line(pageWidth - margin - 40, footerY - lineYOffset, pageWidth - margin, footerY - lineYOffset); 
 
             doc.setFontSize(8);
             doc.text("FIRMA DE RECIBIDO", margin, footerY);
-            doc.text("FIRMA DE AUTORIZACIÓN DE DFA", pageWidth / 2, footerY, null, null, 'center'); // Firma DFA centrada
+            doc.text("FIRMA DE AUTORIZACIÓN DE DFA", pageWidth / 2, footerY, null, null, 'center'); 
             doc.text("FIRMA DEL RESPONSABLE", pageWidth - margin, footerY, null, null, 'right');
         }
     }
