@@ -7,6 +7,7 @@ function setBaseURL() {
 // Llama a la función y almacena el resultado en una constante global
 const BASE_URL = setBaseURL();
 
+//Funcion para el navbar
 document.addEventListener('DOMContentLoaded', function () {
     const catalogos = document.getElementById('catalogos');
     const procesos = document.getElementById('procesos');
@@ -273,6 +274,7 @@ function generarReporte() {
     doc.setFontSize(8);
     doc.text("DF-LP-P002.F01", pageWidth - margin, 13, null, null, 'right');
     doc.text(clave, pageWidth - margin, 18, null, null, 'right');
+    doc.text("Validado por VE ()", pageWidth - margin, 23, null, null, 'right');
 
     // Datos del usuario
     doc.setFontSize(7);
@@ -309,8 +311,8 @@ function generarReporte() {
         head: [['Cant.', 'Descripción', 'Clave CIO', 'Fecha_Devolución']],
         body: data,
         margin: {left: margin, right: margin},
-        styles: {fontSize: 8, cellPadding: 1}, 
-        theme: 'striped' 
+        styles: {fontSize: 8, cellPadding: 1}, // Reducir tamaño de fuente y padding
+        theme: 'striped' // Cambiar tema de la tabla a 'striped'
     });
 
     // Pie de página
@@ -318,17 +320,18 @@ function generarReporte() {
         const pageCount = doc.internal.getNumberOfPages();
         for (let i = 1; i <= pageCount; i++) {
             doc.setPage(i);
-            const footerY = doc.internal.pageSize.height - 7; 
+            const footerY = doc.internal.pageSize.height - 7; // Ajustar margen inferior
 
-            const lineYOffset = 3;
+            // Agregar líneas justo encima de los textos de firma
+            const lineYOffset = 3; // Ajustar la distancia entre la línea y el texto
             doc.setLineWidth(0.5);
-            doc.line(margin, footerY - lineYOffset, margin + 40, footerY - lineYOffset);
-            doc.line(pageWidth / 2 - 20, footerY - lineYOffset, pageWidth / 2 + 20, footerY - lineYOffset); 
-            doc.line(pageWidth - margin - 40, footerY - lineYOffset, pageWidth - margin, footerY - lineYOffset); 
+            doc.line(margin, footerY - lineYOffset, margin + 40, footerY - lineYOffset); // Línea para "FIRMA DE RECIBIDO"
+            doc.line(pageWidth / 2 - 20, footerY - lineYOffset, pageWidth / 2 + 20, footerY - lineYOffset); // Línea para "FIRMA DE AUTORIZACIÓN DE DFA"
+            doc.line(pageWidth - margin - 40, footerY - lineYOffset, pageWidth - margin, footerY - lineYOffset); // Línea para "FIRMA DEL RESPONSABLE"
 
             doc.setFontSize(8);
             doc.text("FIRMA DE RECIBIDO", margin, footerY);
-            doc.text("FIRMA DE AUTORIZACIÓN DE DFA", pageWidth / 2, footerY, null, null, 'center'); 
+            doc.text("FIRMA DE AUTORIZACIÓN DE DFA", pageWidth / 2, footerY, null, null, 'center'); // Firma DFA centrada
             doc.text("FIRMA DEL RESPONSABLE", pageWidth - margin, footerY, null, null, 'right');
         }
     }

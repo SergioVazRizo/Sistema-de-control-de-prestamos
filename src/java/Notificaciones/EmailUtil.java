@@ -7,8 +7,8 @@ import javax.mail.internet.*;
 public class EmailUtil {
 
     public static void enviarCorreoHTML(String to, String subject, String body) {
-        final String username = "prestamosdeposgrado@outlook.com";
-        final String password = "123Notificaciones";
+        final String username = "evillafa@cio.mx";
+        final String password = "queen2018.";
 
         Properties props = new Properties();
         props.put("mail.smtp.auth", "true");
