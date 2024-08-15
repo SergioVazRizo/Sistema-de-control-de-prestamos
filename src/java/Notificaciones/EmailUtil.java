@@ -7,13 +7,21 @@ import javax.mail.internet.*;
 public class EmailUtil {
 
     public static void enviarCorreoHTML(String to, String subject, String body) {
-        final String username = "evillafa@cio.mx";
-        final String password = "queen2018.";
+        final String username = "checoevr@gmail.com";
+        final String password = "ueon znnj ukak xqdo";
 
+        //Microsoft
+//        Properties props = new Properties();
+//        props.put("mail.smtp.auth", "true");
+//        props.put("mail.smtp.starttls.enable", "true");
+//        props.put("mail.smtp.host", "smtp.office365.com");
+//        props.put("mail.smtp.port", "587");
+        
+        //Gmail
         Properties props = new Properties();
         props.put("mail.smtp.auth", "true");
         props.put("mail.smtp.starttls.enable", "true");
-        props.put("mail.smtp.host", "smtp.office365.com");
+        props.put("mail.smtp.host", "smtp.gmail.com");
         props.put("mail.smtp.port", "587");
 
         Session session = Session.getInstance(props, new javax.mail.Authenticator() {
