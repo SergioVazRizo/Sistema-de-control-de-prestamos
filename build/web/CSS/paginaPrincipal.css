@@ -118,11 +118,16 @@
 
 /* Estilos de la página */
 body, html {
-    background-color: #F0EBE3;
+    background-image: url("../Img/fonfo_poli.svg");
+    background-size: cover; /* La imagen cubre toda la pantalla */
+    background-position: center; /* La imagen se centra */
+    background-repeat: no-repeat; /* La imagen no se repite */
+    background-attachment: fixed; /* La imagen de fondo se mantiene fija al hacer scroll */
     margin: 0;
     padding: 0;
     height: 100%;
 }
+
 .container {
     display: flex;
     justify-content: center;
@@ -161,28 +166,28 @@ body, html {
 }
 
 :root {
-            --circle-top-right-out: circle(0% at 100% 0%);
-            --circle-bottom-right-in: circle(100% at 50% 50%);
-        }
+    --circle-top-right-out: circle(0% at 100% 0%);
+    --circle-bottom-right-in: circle(100% at 50% 50%);
+}
 
-        @keyframes in-circle-swoop {
-            from {
-                clip-path: var(--circle-top-right-out);
-            }
-            to {
-                clip-path: var(--circle-bottom-right-in);
-            }
-        }
+@keyframes in-circle-swoop {
+    from {
+        clip-path: var(--circle-top-right-out);
+    }
+    to {
+        clip-path: var(--circle-bottom-right-in);
+    }
+}
 
-        [transition-style="in:custom:circle-swoop"] {
-            --transition__duration: 2s; /* Make the animation faster */
-            animation: in-circle-swoop var(--transition__duration) ease-out both;
-            position: absolute; /* Ensure it is positioned correctly */
-            top: 0;
-            left: 0;
-            width: 100vw; /* Full viewport width */
-            height: 100vh; /* Full viewport height */
-            overflow: hidden; /* Hide overflow */
-            z-index: 1; /* Ensure it is above other content */
-        }
+[transition-style="in:custom:circle-swoop"] {
+    --transition__duration: 2s; /* Make the animation faster */
+    animation: in-circle-swoop var(--transition__duration) ease-out both;
+    position: absolute; /* Ensure it is positioned correctly */
+    top: 0;
+    left: 0;
+    width: 100vw; /* Full viewport width */
+    height: 100vh; /* Full viewport height */
+    overflow: hidden; /* Hide overflow */
+    z-index: 1; /* Ensure it is above other content */
+}
 
