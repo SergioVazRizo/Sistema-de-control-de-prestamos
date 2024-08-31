@@ -79,7 +79,8 @@ public class RestUsuario {
             return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity(out).build();
         }
     }
-
+    
+    
     @Path("editarUsuario")
     @POST
     @Produces(MediaType.APPLICATION_JSON)

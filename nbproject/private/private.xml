@@ -12,9 +12,9 @@
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/EstadiasCIO/SistemaGestion/web/JavaScript/ReportePrestamos.js</file>
-            <file>file:/D:/EstadiasCIO/SistemaGestion/src/java/Notificaciones/EmailUtil.java</file>
-            <file>file:/D:/EstadiasCIO/SistemaGestion/web/index.html</file>
+            <file>file:/D:/EstadiasCIO/SistemaGestion/web/JavaScript/CatalogoUsuario.js</file>
+            <file>file:/D:/EstadiasCIO/SistemaGestion/src/java/org/rest/RestUsuario.java</file>
+            <file>file:/D:/EstadiasCIO/SistemaGestion/web/HTML/CatalogoUsuarios.html</file>
         </group>
     </open-files>
 </project-private>
